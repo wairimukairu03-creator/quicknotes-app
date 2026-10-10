@@ -8,9 +8,7 @@ const notesList = document.querySelector("#notes-list");
 
 let notes = JSON.parse(localStorage.getItem("quickNotes")) || [];
 
-function saveNotesToLocalStorage() {
-  localStorage.setItem("quickNotes", JSON.stringify(notes));
-}
+
 
 function updateNoteCount(filteredCount) {
   if (filteredCount === 0) {
@@ -63,17 +61,7 @@ function render(searchTerm = "") {
   updateNoteCount(filteredNotes.length);
 }
 
-function addNote(text, category) {
-  if (text.trim() === "") {
-    errorMessage.textContent = "Please type a note first.";
-    return false;
-  }
-  if (text.length > 200) {
-    errorMessage.textContent = "Notes must be 200 characters or fewer.";
-    return false;
-  }
 
-  errorMessage.textContent = "";
 
   const newNote = {
     id: Date.now().toString(),
