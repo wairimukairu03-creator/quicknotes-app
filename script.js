@@ -8,6 +8,10 @@ const notesList = document.querySelector("#notes-list");
 
 let notes = JSON.parse(localStorage.getItem("quickNotes")) || [];
 
+function saveNotesToLocalStorage() {
+  localStorage.setItem("quickNotes", JSON.stringify(notes));
+}
+
 function updateNoteCount(filteredCount) {
   if (filteredCount === 0) {
     noteCount.textContent = "You have no notes yet.";
