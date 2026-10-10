@@ -5,6 +5,7 @@ const errorMessage = document.querySelector("#error-message");
 const searchInput = document.querySelector("#search-input");
 const noteCount = document.querySelector("#note-count");
 const notesList = document.querySelector("#notes-list");
+const clearAllBtn = document.querySelector("#clear-all-btn");
 
 let notes = JSON.parse(localStorage.getItem("quickNotes")) || [];
 
@@ -99,6 +100,15 @@ noteForm.addEventListener("submit", (e) => {
   const success = addNote(noteInput.value, noteCategory.value);
   if (success) {
     noteInput.value = "";
+  }
+});
+
+clearAllBtn.addEventListener("click", () => {
+  const confirmDelete = confirm("Delete all notes?");
+  if (confirmDelete) {
+    notes = [];
+    saveNotesToLocalStorage();
+    render(searchInput.value);
   }
 });
 
